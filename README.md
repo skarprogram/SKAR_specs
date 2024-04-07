@@ -1,4 +1,4 @@
-This is a Powershell script to collect computer hardware and software information.
+This is a Powershell script to collect computer hardware and software information. Generates HTML file. No interface. Take that HTML file and send it to your Tech guy :) or as an admin collect basic info about company computers for inventory purposes.
 
 This came about as many computer specs software need licensing to use in company setting. HWInfo, AIDA32...
 Speccy was nice but development stopped or something like that.

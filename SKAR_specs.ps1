@@ -1,4 +1,4 @@
-﻿<#
+<#
 COPYRIGHT SKAR_specs 2024 (C)
 
 Gathers information about computer hardware and software. Outputs to a HTML file.
@@ -122,6 +122,10 @@ Add-Content -Path $FilePath -Value '<tr>
 <td class="tg-0lax">Network Devices</td>
 <td class="tg-0lax">'
 Get-NetAdapter -Physical | Select-Object Name, MacAddress, Status | ConvertTo-Html -Fragment | Add-Content -Path $FilePath
+Add-Content -Path $FilePath '<br>Public IP Address ifconfig.me: '
+(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content | Add-Content -Path $FilePath
+Add-Content -Path $FilePath '<br> Public IP Address (opendns.com):'
+Resolve-DnsName -Name myip.opendns.com -Server resolver1.opendns.com | Select-Object -ExpandProperty IPAddress | Add-Content -Path $FilePath
 Add-Content -Path $FilePath -Value '</td></tr>'
 #row end
 #row start

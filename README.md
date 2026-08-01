@@ -1,5 +1,7 @@
 # SKAR_specs
 
+This app is a response to a very bad situation with computer specification software around the internet. Lots of adware, lots of paid software. Lots of hard to use software. Not even Windows itself have a utility that shows all info in one place. Well, task manager probably does the best job at that :) (newer windows builds have half baked about screen, better than used to be). So this program generates a HTML report of computer specifications. Double click a file, wait a little, open the file. Read all necessary information about computer in one page. Take the file forward, send, take a photo of summary page. 
+
 SKAR_specs is a Windows system-inventory utility that collects hardware, operating-system, network, printer, software, and license information into a portable report. It produces HTML by default and can also export JSON or plain text.
 
 > [!WARNING]

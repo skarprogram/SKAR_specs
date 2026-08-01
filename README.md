@@ -1,20 +1,69 @@
-This is a Powershell script to collect computer hardware and software information. Generates HTML file. No interface. Take that HTML file and send it to your Tech guy :) or as an admin collect basic info about company computers for inventory purposes.
+# SKAR_specs
 
-This came about as many computer specs software need licensing to use in company setting. HWInfo, AIDA32...
-Speccy was nice but development stopped or something like that. Also malware issues with parent company.
+SKAR_specs is a Windows system-inventory utility that collects hardware, operating-system, network, printer, software, and license information into a portable report. It produces HTML by default and can also export JSON or plain text.
 
-This is about basic hardware and software info.
+> [!WARNING]
+> Reports may contain sensitive information, including usernames, device serial numbers, MAC/IP addresses, network shares, installed software, license status, and remote-support IDs. Review every report before sharing it or attaching it to a public issue.
 
-Generate report quickly. Collect computer's inventory in your company to reference when upgrades or reports are needed.
+## Requirements
 
-Run it with Powershell or make it an exe file.
+- Windows 10 or Windows 11
+- .NET Framework 4.6 or a later compatible .NET Framework 4.x runtime
+- Visual Studio 2022 with .NET desktop build tools, or equivalent MSBuild tooling, to build from source
 
-Tested mostly on Windows 10 and 11 computers.
+The application is Windows-only because it uses WMI, the Windows Registry, and Windows command-line utilities.
 
-ISSUES:
-Cannot get multiple monitor support. ChatGPT did not help. All suggestions produced 0 monitors. Would like to get monitors models and serial numbers.
-Report anything else. I am not programmer but I am interested.
+## Build
 
-Report looks like:
+Open `SKAR_specs.sln` in Visual Studio and build the `Release` configuration, or run:
 
-![image](https://github.com/skarprogram/SKAR_specs/assets/166335870/38b944a1-55d6-4a3f-a146-611077439bb2)
+```powershell
+.\Build.ps1
+```
+
+The build script defaults to `Release`, verifies the expected output files, and prints the executable's SHA-256 checksum. To invoke MSBuild directly instead, run:
+
+```powershell
+dotnet msbuild .\SKAR_specs.sln -p:Configuration=Release
+```
+
+The executable is written to `bin\Release\SKAR_specs.exe`. The project has no third-party package dependencies.
+
+## Usage
+
+Run `SKAR_specs.exe`. A timestamped report is created beside the executable.
+
+```powershell
+# HTML (default)
+.\SKAR_specs.exe
+
+# JSON
+.\SKAR_specs.exe --json
+
+# Plain text
+.\SKAR_specs.exe --text
+
+# Include timing and diagnostic details
+.\SKAR_specs.exe --debug
+```
+
+Options are case-insensitive. The short Windows-style forms `-json`, `/json`, `-txt`, `/txt`, `-text`, `/text`, `-debug`, and `/debug` are also accepted.
+
+## What it collects
+
+- System summary, Windows version, TPM, and current-user details
+- Motherboard, BIOS, processor, memory, disks, graphics, and monitors
+- Network adapters, IP configuration, shares, mapped drives, and connectivity
+- Printers and printer ports
+- Installed desktop software and UWP apps
+- Windows/Office license status and selected remote-support IDs
+
+For connectivity reporting, SKAR_specs sends HTTPS requests to `ifconfig.me`, `api.ipify.org`, and `ipinfo.io` to determine the public IP address. It also pings `8.8.8.8`, `1.1.1.1`, and `9.9.9.9`. No report file is uploaded by SKAR_specs.
+
+## Contributing
+
+Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). Never include an unredacted SKAR_specs report or other sensitive inventory data in a public issue.
+
+## License
+
+SKAR_specs is free software licensed under the [GNU General Public License v3.0 only](LICENSE) (`GPL-3.0-only`).

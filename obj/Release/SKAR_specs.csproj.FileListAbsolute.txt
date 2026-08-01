@@ -1,0 +1,7 @@
+E:\DESKTOP\PROGRAMMING\SKAR_specs\SKAR_specs_cloude_test2\bin\Release\SKAR_specs.exe.config
+E:\DESKTOP\PROGRAMMING\SKAR_specs\SKAR_specs_cloude_test2\bin\Release\SKAR_specs.exe
+E:\DESKTOP\PROGRAMMING\SKAR_specs\SKAR_specs_cloude_test2\bin\Release\SKAR_specs.pdb
+E:\DESKTOP\PROGRAMMING\SKAR_specs\SKAR_specs_cloude_test2\obj\Release\SKAR_specs.csproj.AssemblyReference.cache
+E:\DESKTOP\PROGRAMMING\SKAR_specs\SKAR_specs_cloude_test2\obj\Release\SKAR_specs.csproj.CoreCompileInputs.cache
+E:\DESKTOP\PROGRAMMING\SKAR_specs\SKAR_specs_cloude_test2\obj\Release\SKAR_specs.exe
+E:\DESKTOP\PROGRAMMING\SKAR_specs\SKAR_specs_cloude_test2\obj\Release\SKAR_specs.pdb
